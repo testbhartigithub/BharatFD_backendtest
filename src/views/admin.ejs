@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Admin</title>
+    <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+</head>
+<body>
+    <h1>FAQ Admin</h1>
+    <form action="/api/faqs" method="POST">
+        <label for="question">Question:</label>
+        <input type="text" id="question" name="question" required><br>
+        <label for="answer">Answer:</label>
+        <textarea id="answer" name="answer" required></textarea><br>
+        <button type="submit">Add FAQ</button>
+    </form>
+
+    <h2>Existing FAQs</h2>
+    <ul>
+    <% faqs.forEach(faq => { %>
+        <li>
+            <strong><%= faq.question %></strong>
+            <p><%- faq.answer %></p>
+        </li>
+    <% }); %>
+    </ul>
+
+    <script>
+        CKEDITOR.replace('answer');
+    </script>
+</body>
+</html>
